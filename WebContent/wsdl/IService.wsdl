@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://test.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://test.com" xmlns:intf="http://test.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://test.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="f2c">
+    <complexType>
+     <sequence>
+      <element name="fheat" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="f2cResponse">
+    <complexType>
+     <sequence>
+      <element name="f2cReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="f2cResponse">
+
+      <wsdl:part element="impl:f2cResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="f2cRequest">
+
+      <wsdl:part element="impl:f2c" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IService">
+
+      <wsdl:operation name="f2c">
+
+         <wsdl:input message="impl:f2cRequest" name="f2cRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:f2cResponse" name="f2cResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="IServiceSoapBinding" type="impl:IService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="f2c">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="f2cRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="f2cResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="IServiceService">
+
+      <wsdl:port binding="impl:IServiceSoapBinding" name="IService">
+
+         <wsdlsoap:address location="http://localhost:9999/HelloWeb/services/IService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
